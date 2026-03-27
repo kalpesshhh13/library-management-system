@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Library</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<script>
+if(localStorage.getItem("loggedIn")!=="true"){
+    window.location.href="login.html";
+}
+</script>
+
+<!-- NAVBAR -->
+<nav>
+    <h2>📚 Smart Library</h2>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <ul id="menu">
+        <li onclick="showSection('home')">Home</li>
+        <li onclick="showSection('add')">Add Book</li>
+        <li onclick="showSection('books')">Books</li>
+        <li onclick="showSection('about')">About</li>
+        <li onclick="logout()">Logout</li>
+    </ul>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="section active">
+    <div class="hero">
+        <h1>Welcome to Smart Library</h1>
+        <p>Explore knowledge, manage books efficiently.</p>
+    </div>
+
+    <div class="stats">
+        <div>Total Books: <span id="totalBooks"></span></div>
+        <div>Categories: <span id="totalCategories"></span></div>
+    </div>
+
+    <h2>📖 Recommended Books</h2>
+    <div id="homeBooks"></div>
+</div>
+
+<!-- ADD BOOK -->
+<div id="add" class="section">
+    <h2>Add Book</h2>
+    <input id="bookName" placeholder="Book Name">
+    <input id="authorName" placeholder="Author">
+    <input id="category" placeholder="Category">
+    <input id="image" placeholder="Image URL">
+    <textarea id="description" placeholder="Full Description"></textarea>
+    <button onclick="addBook()">Add Book</button>
+</div>
+
+<!-- BOOKS -->
+<div id="books" class="section">
+    <h2>Library Books</h2>
+
+    <input id="search" placeholder="Search books...">
+    <div id="suggestions"></div>
+    <button onclick="searchBook()">Search</button>
+
+    <div id="bookContainer"></div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="section">
+    <h2>About Smart Library</h2>
+
+    <p>This Smart Library Management System is a modern web application designed to simplify the process of managing books digitally.</p>
+
+    <p>Key Features:</p>
+    <ul>
+        <li>Add and store books with images</li>
+        <li>Search books with suggestions</li>
+        <li>View detailed information in popup</li>
+        <li>Responsive design for mobile & desktop</li>
+        <li>Secure login system</li>
+    </ul>
+
+    <p>This project is developed using HTML, CSS and JavaScript, and uses localStorage for data persistence.</p>
+
+    <p><b>Developed by BSc TY Student</b></p>
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span onclick="closeModal()">✖</span>
+        <div id="modalData"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
